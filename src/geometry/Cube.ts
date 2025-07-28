@@ -3,43 +3,9 @@ import Drawable from '../rendering/gl/Drawable';
 import {gl} from '../globals';
 
 class Cube extends Drawable {
-    indices: Uint32Array;
-    positions: Float32Array;
-    normals: Float32Array;
-    center: vec4;
-
     constructor(center: vec3) {
         super(); // Call the constructor of the super class. This is required.
         this.center = vec4.fromValues(center[0], center[1], center[2], 1);
-    }
-
-    applyTranslation() {
-        // Build T = | 1 0 0 tx |
-        //           | 0 1 0 ty |
-        //           | 0 0 1 tz |
-        //           | 0 0 0  1 |
-        const T = mat4.create();
-        const tx = this.center[0];
-        const ty = this.center[1];
-        const tz = this.center[2];
-        mat4.translate(T, T, [tx, ty, tz]);   // T = translate(I, [tx,ty,tz])
-
-        // For each vertex, p' = T * p
-        for (let i = 0; i < this.positions.length; i += 4) {
-            const p = vec4.fromValues(
-                this.positions[i    ],
-                this.positions[i + 1],
-                this.positions[i + 2],
-                this.positions[i + 3]   // will be 1
-            );
-            vec4.transformMat4(p, p, T);
-
-            // write back
-            this.positions[i    ] = p[0];
-            this.positions[i + 1] = p[1];
-            this.positions[i + 2] = p[2];
-            // w stays 1
-        }
     }
 
     computeNormals(positions: Float32Array, indices: Uint32Array): Float32Array {
@@ -105,8 +71,6 @@ class Cube extends Drawable {
                         1, 1, 1, 1,
                         -1, 1, 1, 1
                     ]);
-    
-    this.applyTranslation();
 
     this.normals = this.computeNormals(this.positions, this.indices);
 

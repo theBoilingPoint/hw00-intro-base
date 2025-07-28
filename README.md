@@ -1,3 +1,8 @@
+# Demo
+|![cover](./imgs/demo.png)|
+|:--:|
+|[Link to Demo](http://theBoilingPoint.github.io/hw00-intro-base)|
+
 # HW 0: Intro to Javascript and WebGL
 
 <p align="center">

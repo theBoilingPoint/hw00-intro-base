@@ -4,10 +4,6 @@ import {gl} from '../globals';
 
 class Icosphere extends Drawable {
   buffer: ArrayBuffer;
-  indices: Uint32Array;
-  positions: Float32Array;
-  normals: Float32Array;
-  center: vec4;
 
   constructor(center: vec3, public radius: number, public subdivisions: number) {
     super(); // Call the constructor of the super class. This is required.

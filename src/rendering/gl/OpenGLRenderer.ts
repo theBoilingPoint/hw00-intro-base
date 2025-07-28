@@ -10,8 +10,8 @@ class OpenGLRenderer {
 
   constructor(public canvas: HTMLCanvasElement) { }
 
-  setAlbedo(r: number, g: number, b: number, a: number) {
-    this.albedo = vec4.fromValues(r / 255.0, g / 255.0, b / 255.0, a / 255.0);
+  setAlbedo(r: number, g: number, b: number) {
+    this.albedo = vec4.fromValues(r / 255.0, g / 255.0, b / 255.0, 1.0);
   }
 
   setClearColor(r: number, g: number, b: number, a: number) {
